@@ -19,7 +19,10 @@ def save_pics(pic_lists):
     os.mkdir(file_name)
     os.chdir(os.path.join(os.getcwd(), file_name))
     i = 0
+    j = 0
+
     print('图片下载中...')
+
     for pic in pic_lists:
         with open(str(i)+'.jpg','wb') as fd:
             response = requests.get(pic)
@@ -32,7 +35,7 @@ if __name__ == "__main__":
     url = "http://www.xiaohuar.com/list-1-{}.html"
     total_pics = []
     page = int(input('请输入要爬取的页数：'))
-    for i in range(1,page + 1):
+    for i in range(0,page + 1):
         new_url = url.format(i)
         pics = get_pics(new_url)
         total_pics.extend(pics)
